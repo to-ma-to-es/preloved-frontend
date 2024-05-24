@@ -150,10 +150,13 @@ a {
 // books dialog
 .book-dialog {
   --width: 70%;
+  position: relative;
+  z-index: 100;
+  background-color: aqua;
 }
 
 .book-dialog::part(body){
-  margin-top: -4em;;
+  margin-top: -4em;
 }
 
 .book-dialog::part(header-actions) {

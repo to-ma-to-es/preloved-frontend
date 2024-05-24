@@ -43,9 +43,9 @@ customElements.define('va-book', class Book extends LitElement {
     super.firstUpdated()
   }
 
-    async moreInfoHandler(){
+  async moreInfoHandler(){
     // create sl-dialog
-    const dialogEl = document.createElement('sl-dialog')
+    const dialogEl = document.createElement('div')
     // give class name
     dialogEl.className = 'book-dialog'
     // sl-dialog content
@@ -74,6 +74,7 @@ customElements.define('va-book', class Book extends LitElement {
         }
     </style>
         <div class="wrap">
+        <button id="backButton">back</button>
         <div class="image">
             <img src="${App.apiBase}/images/${this.image}" />
         </div>
@@ -100,13 +101,18 @@ customElements.define('va-book', class Book extends LitElement {
     // append to document.body
     await document.body.append(dialogEl)
 
-    // show sl-dialog
+    const backButton = document.querySelector('#backButton')
+
+    backButton.addEventListener('click', () => {
+      dialogEl.remove();
+    })
+    /* // show sl-dialog
     dialogEl.show()
 
     // on hide, delete
     dialogEl.addEventListener('sl-after-hide', () => {
         dialogEl.remove()
-    })
+    }) */ 
   }
 
   async addFavHandler(){    
