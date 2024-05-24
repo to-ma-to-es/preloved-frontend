@@ -8,9 +8,9 @@ import editProfileView from './views/pages/editProfile'
 import guideView from './views/pages/guide'
 import hairdressersView from './views/pages/hairdressers'
 import booksView from './views/pages/books'
-import favouriteBooksView from './views/pages/favouriteBooks'
+import favouriteBooksView from './views/pages/favouriteBooks' 
 import newBookView from './views/pages/newBook'
-import cartBookView from './views/pages/cartBooks'
+import cartBooksView from './views/pages/cartBooks'
 
 // define routes - shows my different js views
 const routes = {
@@ -25,7 +25,7 @@ const routes = {
 	'/profile': profileView,
 	'/editProfile': editProfileView,
 	'/newBook': newBookView,
-	'/cart': cartBookView
+	'/cart': cartBooksView
 }
 
 class Router {

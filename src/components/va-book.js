@@ -152,4 +152,7 @@ customElements.define('va-book', class Book extends LitElement {
 })
 
 /*  <sl-button @click=${this.moreInfoHandler.bind(this)}>More Info</sl-button> the .bind(this) ensures javascript understands 
-"this" as class Book instead of thinking "this" refers to sl-button bc fnc*/
+"this" as class Book instead of thinking "this" refers to sl-button bc fnc*
+
+
+more info fnc - instead of sl dialog create a div, or edit dialog to look like a view */

@@ -59,4 +59,4 @@ class FavouriteBooksView {
 }
 
 
-export default new FavouriteBooksView()
+export default new FavouriteBooksView() 
