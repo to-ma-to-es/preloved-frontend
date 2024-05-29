@@ -43,12 +43,14 @@ class CartBooksView {
                 <va-book class="book-card"
                   id="${book._id}"
                   name="${book.name}"
+                  author="${book.author}"
                   description="${book.description}"
                   price="${book.price}"
                   user="${JSON.stringify(book.user)}"
                   image="${book.image}"
-                  gender="${book.gender}"
-                  length="${book.length}"
+                  condition="${book.condition}"
+                  coverType="${book.coverType}"
+                  year="${book.year}"
                 >        
                 </va-book>
 

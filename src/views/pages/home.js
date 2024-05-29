@@ -25,14 +25,14 @@ class HomeView {
 
     let filteredBooks
 
-    // gender
-    if(field == 'gender'){
-      filteredBooks = this.books.filter(book => book.gender == match)
+    // condition
+    if(field == 'condition'){
+      filteredBooks = this.books.filter(book => book.condition == match)
     }
 
-    // length
-    if(field == 'length'){
-      filteredBooks = this.books.filter(book => book.length == match)
+    // cover type
+    if(field == 'coverType'){
+      filteredBooks = this.books.filter(book => book.coverType == match)
     }
 
     // price
@@ -103,22 +103,21 @@ class HomeView {
             Filter by
           </div>
           <div>
-            <strong>Gender</strong>
-            <sl-button class="filter-btn" size="small" data-field="gender" data-match="m" @click=${this.handleFilterBtn.bind(this)}>M</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="gender" data-match="f" @click=${this.handleFilterBtn.bind(this)}>F</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="gender" data-match="u" @click=${this.handleFilterBtn.bind(this)}>U</sl-button>
+            <strong>Condition</strong>
+            <sl-button class="filter-btn" size="small" data-field="condition" data-match="fair" @click=${this.handleFilterBtn.bind(this)}>Fair</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="condition" data-match="good" @click=${this.handleFilterBtn.bind(this)}>Good</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="condition" data-match="excellent" @click=${this.handleFilterBtn.bind(this)}>Excellent</sl-button>
           </div>
           <div>
-            <strong>Length</strong>
-            <sl-button class="filter-btn" size="small" data-field="length" data-match="s" @click=${this.handleFilterBtn.bind(this)}>S</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="length" data-match="m" @click=${this.handleFilterBtn.bind(this)}>M</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="length" data-match="l" @click=${this.handleFilterBtn.bind(this)}>L</sl-button>
+            <strong>Cover Type</strong>
+            <sl-button class="filter-btn" size="small" data-field="coverType" data-match="paperback" @click=${this.handleFilterBtn.bind(this)}>Paperback</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="coverType" data-match="hardcover" @click=${this.handleFilterBtn.bind(this)}>Hardcover</sl-button>
           </div>
           <div>
             <strong>Price</strong>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="10-20" @click=${this.handleFilterBtn.bind(this)}>$10-$20</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="20-30" @click=${this.handleFilterBtn.bind(this)}>$20-$30</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="30-40" @click=${this.handleFilterBtn.bind(this)}>$30-$40</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="price" data-match="1-5" @click=${this.handleFilterBtn.bind(this)}>$1-$5</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="price" data-match="6-10" @click=${this.handleFilterBtn.bind(this)}>$6-$10</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="price" data-match="11-15" @click=${this.handleFilterBtn.bind(this)}>$11-$15</sl-button>
           </div>
 
           <div>
@@ -134,12 +133,14 @@ class HomeView {
             <va-book class="book-card" 
               id="${book._id}"
               name="${book.name}" 
+              author="${book.author}"
               description="${book.description}"
               price="${book.price}"
               user="${JSON.stringify(book.user)}"
               image="${book.image}"
-              gender="${book.gender}"
-              length="${book.length}">
+              condition="${book.condition}"
+              coverType="${book.coverType}"
+              year="${book.year}">
 
           </va-book>
           `)}

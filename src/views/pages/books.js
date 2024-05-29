@@ -1,3 +1,4 @@
+/* THIS CAN BE REMOVED, JUST FOR REFERENCE
 import App from '../../App'
 import {html, render } from 'lit'
 import {gotoRoute, anchorRoute} from '../../Router'
@@ -155,3 +156,5 @@ class BooksView {
 // if else content is html``: html``
 // img src="${App.apiBase}/images/${book.image}" is getting location of image
 export default new BooksView()
+
+*/

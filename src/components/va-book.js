@@ -18,6 +18,9 @@ customElements.define('va-book', class Book extends LitElement {
       name: {
         type: String // this means that i can write <va-book title=" what user wants to set title to be here"></va-book>
       },
+      author: {
+        type: String 
+      },
       description: {
         type: String
       },
@@ -30,10 +33,13 @@ customElements.define('va-book', class Book extends LitElement {
       image: {
         type: String
       },
-      gender: {
+      condition: {
         type: String
       }, 
-      length: {
+      coverType: {
+        type: String
+      }, 
+      year: {
         type: String
       }
     }
@@ -63,14 +69,14 @@ customElements.define('va-book', class Book extends LitElement {
         .content {
             padding-left: 1em;
         }
-        .gender span,
-        .length span {
-            text-transform: uppercase;
-            font-weight: bold;
+        .condition span,
+        .cover-type span, 
+        .year span {
+            text-transform: capitalize;
+            color: #3f3f3f;
         }
         .price {
             font-size: 1.5em;
-            color: var(--brand-color);
         }
     </style>
         <div class="wrap">
@@ -80,10 +86,12 @@ customElements.define('va-book', class Book extends LitElement {
         </div>
         <div class="content">
             <h1>${this.name}</h1>
+            <h2>${this.author}</h2>
             <p>${this.description}</p>
             <p class="price">$${this.price}</p>
-            <p class="gender">Gender: <span>${this.gender}</span></p>
-            <p class="length">Length: <span>${this.length}</span></p>
+            <p class="condition">Condition: <span>${this.condition}</span></p>
+            <p class="cover-type">Cover Type: <span>${this.coverType}</span></p>
+            <p class="year">Year: <span>${this.year}</span></p>
 
             <sl-button @click=${this.addFavHandler.bind(this)}>
             <sl-icon slot="prefix" name="heart-fill"></sl-icon>
@@ -136,21 +144,45 @@ customElements.define('va-book', class Book extends LitElement {
   render(){    
     return html`
     <style>
-        .author {
-            font: 0.9em;
-            font-style: italic;
-            opacity: 0.8;
-        }
+      sl-card::part(base) {
+        border: none;
+        background-color: var(--body-bg);
+        box-shadow: none;
+     }
+
+     sl-card::part(body){
+      font-size: .9rem;
+      padding: 0;
+     }
+
+     .price-section {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      color: #3f3f3f;
+      
+     }
+     .fav-star {
+      padding-bottom: .5rem;
+      color: var(--brand-color);
+     }
+
+     p{
+      color: #3f3f3f;
+      margin: 0;
+      padding:0;
+     }
     </style>
 
     <sl-card>
-        <img slot="image" src="${App.apiBase}/images/${this.image}">
-        <h2>${this.name}</h2>
-        <h3>$${this.price}</h3>
-        <p class="author">by ${this.user.firstName} ${this.user.lastName}</p>
-        <sl-button @click=${this.moreInfoHandler.bind(this)}>More Info</sl-button>
-        <sl-icon-button name="heart-fill" label="Add to favourites" @click=${this.addFavHandler.bind(this)}></sl-icon-button>
-        <sl-icon-button name="cart" label="Add to cart" @click=${this.addCaHandler.bind(this)}></sl-icon-button>
+        <img slot="image" src="${App.apiBase}/images/${this.image}" @click=${this.moreInfoHandler.bind(this)}>
+        <h2 @click=${this.moreInfoHandler.bind(this)}>${this.name}</h2>
+        <p @click=${this.moreInfoHandler.bind(this)}>${this.author}</p>
+        <div class="price-section">
+          <h3>$${this.price}</h3>
+          <sl-icon-button class="fav-star" name="star" label="Add to favourites" @click=${this.addFavHandler.bind(this)}></sl-icon-button>
+        </div>
+        
     </sl-card>    
     `
   }
@@ -161,4 +193,9 @@ customElements.define('va-book', class Book extends LitElement {
 "this" as class Book instead of thinking "this" refers to sl-button bc fnc*
 
 
-more info fnc - instead of sl dialog create a div, or edit dialog to look like a view */
+more info fnc - instead of sl dialog create a div, or edit dialog to look like a view 
+
+<p class="author">by ${this.user.firstName} ${this.user.lastName}</p>
+<sl-button @click=${this.moreInfoHandler.bind(this)}>More Info</sl-button>
+<sl-icon-button name="cart" label="Add to cart" @click=${this.addCaHandler.bind(this)}></sl-icon-button>
+*/

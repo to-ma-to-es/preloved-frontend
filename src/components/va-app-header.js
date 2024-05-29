@@ -81,8 +81,6 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         display: flex;
         z-index: 9;
         box-shadow: 4px 0px 10px rgba(0,0,0,0.2); 
-        align-items: center;
-        display: flex;
         justify-content: space-between; /* Pushes h1 and navigation to opposite sides of the screen */
         align-items: center;
       }

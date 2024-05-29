@@ -53,32 +53,37 @@ class newBookView {
           <form class="page-form" @submit=${this.newBookSubmitHandler}>
             <input type="hidden" name="user" value="${Auth.currentUser._id}" />
             <div class="input-group">
-              <sl-input name="name" type="text" placeholder="Book Name" required></sl-input>
+              <sl-input name="name" type="text" placeholder="Book Title" required></sl-input>
             </div>
+            <div class="input-group">
+              <sl-input name="author" type="text" placeholder="Author Name" required></sl-input>
+            </div>            
             <div class="input-group">              
               <sl-input name="price" type="text" placeholder="Price" required>
                 <span slot="prefix">$</span>
               </sl-input>
             </div>
             <div class="input-group">
-              <sl-textarea name="description" rows="3" placeholder="Description"></sl-textarea>
+              <sl-textarea name="description" rows="3" placeholder="Book Description"></sl-textarea>
             </div>
+            <div class="input-group">
+              <sl-input name="year" type="text" placeholder="Year" required></sl-input>
+            </div>         
             <div class="input-group" style="margin-bottom: 2em;">
               <label>Image</label><br>
               <input type="file" name="image" />              
             </div>
             <div class="input-group" style="margin-bottom: 2em;">
-              <sl-radio-group name="gender" label="Gender">
-                <sl-radio value="m">Male</sl-radio>
-                <sl-radio value="f">Female</sl-radio>
-                <sl-radio value="u">Unisex</sl-radio>
+              <sl-radio-group name="condition" label="Condition">
+                <sl-radio value="fair">Fair</sl-radio>
+                <sl-radio value="good">Good</sl-radio>
+                <sl-radio value="excellent">Excellent</sl-radio>
               </sl-radio-group>
             </div>
             <div class="input-group" style="margin-bottom: 2em;">
-              <sl-radio-group name="length" label="Length">
-                <sl-radio value="s">Short</sl-radio>
-                <sl-radio value="m">Medium</sl-radio>
-                <sl-radio value="l">Long</sl-radio>
+              <sl-radio-group name="coverType" label="CoverType">
+                <sl-radio value="paperback">Paperback</sl-radio>
+                <sl-radio value="hardcover">Hardcover</sl-radio>
               </sl-radio-group>
             </div>
             <sl-button variant="primary" type="submit" class="submit-btn">Add Book</sl-button>
