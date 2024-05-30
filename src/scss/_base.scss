@@ -1,5 +1,7 @@
-// Base
+// variables
+$border: solid red 3px;
 
+// Base
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
@@ -10,9 +12,8 @@ body {
   margin: 0;
   color: var(--base-txt-color);
   font-family: var(--base-font-family);
-  // font-weight: 400;
   background: var(--body-bg);
-  height: 100vh;
+  // height: 100vh;
 }
 
 /* Body Font */
@@ -20,7 +21,14 @@ body {
   font-family: "Adobe_Garamond";
   src:url("./../../static/fonts/AGaramondPro-Regular.otf");
 }
-
+@font-face {
+  font-family: "Adobe_Garamond_Italic";
+  src:url("./../../static/fonts/AGaramondPro-Italic.otf");
+}
+@font-face {
+  font-family: "Adobe_Garamond_Bold";
+  src:url("./../../static/fonts/AGaramondPro-Bold.otf");
+}
 /* Heading Font */
 @font-face {
   font-family: "League_Gothic";
@@ -32,7 +40,7 @@ body {
 h1,h2,h3,h5,h6 {
   margin: 0 0 .5em;
   color: var(--heading-color);
-  font-weight: 100;
+
 }
 
 // links ---------------
@@ -136,19 +144,102 @@ a {
     height: auto;
   }
 }
+
+// home page ------------------
+.page-content {
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  text-align: center;
+  font-family: "Adobe_Garamond_Italic";
+  background-color: var(--brand-color);
+  color: var(--body-bg);
+  padding: 0.4em 0 0.4em 0;
+}
+.book-of-the-day-parent {
+  
+  background-image: url('../../static/images/citrus-tree.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+
+  .book-of-the-day {
+    // border: $border;
+    background-color: var(--body-bg);
+    padding: 1.4em;
+    
+
+    .botd-image {
+      max-width: 100%; 
+      max-height: 14rem; 
+      display: block; 
+      margin: auto; 
+    }
+
+    .botd-information {
+      margin-left: 1.2rem;
+      h1 {
+        font-size: 1.8rem;
+        font-family: var(--league);
+        font-weight: 100;
+        
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        // font-weight: 100;
+        font-family: var(--bold);
+
+        span {
+          font-family: var(--regular);
+          color: #3f3f3f;
+        }
+      }
+
+      p {
+        font-size: .95rem;
+      }
+      
+    }
+
+  }
+  
+}
+
+@media all and (min-width: 768px){ 
+  
+  .book-of-the-day-parent {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 1.4rem 0;
+  
+    .book-of-the-day {
+    display: flex;
+    padding: 1.4em 5em 1.4em 1.4em;
+    border-radius: 0.15rem;
+    
+
+    .botd-information {
+      width: 60ch;
+    }
+  }
+}
+}
+
+
 // display books --------------
 
 .books-grid {
   display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fill, minmax(10em, 3fr));
-
+  gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(8em, 3fr));
+  border: solid red 3px;
   .book-card {
     margin: 0.4rem;
   }
 }
-
-
 
 
 // books dialog

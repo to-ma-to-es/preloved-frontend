@@ -35,6 +35,11 @@ class HomeView {
       filteredBooks = this.books.filter(book => book.coverType == match)
     }
 
+      // genre
+      if(field == 'genre'){
+        filteredBooks = this.books.filter(book => book.genre == match)
+      }
+
     // price
     if(field == 'price'){
       // get priceRangeStart 
@@ -97,7 +102,20 @@ class HomeView {
 
     </style>
       <va-app-header title="Books" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">       
+      <div class="page-content">
+        <div class="banner">15% of Your Purchases Goes to Trillion Trees Australia!</div>
+        <div class="book-of-the-day-parent">
+          <div class="book-of-the-day">
+            <img class="botd-image" src="/images/citrus-county.jpg">
+            <div class="botd-information">
+              <h1>BOOK OF THE DAY</h1>
+              <h2>Citrus County by John Brandon &nbsp; <span>$10.00<span></h2>
+              <p>"There shouldn’t be a Citrus County. Teenage romance should be difficult, but not this difficult. Boys like Toby should cause trouble but not this much. The moon should glow gently over children safe in their beds..." </p>
+              <sl-button class="botd-btn">CHECK IT OUT</sl-button>
+            </div>
+        
+          </div>
+        </div>       
         <div class="filter-menu">
           <div>
             Filter by
@@ -118,13 +136,20 @@ class HomeView {
             <sl-button class="filter-btn" size="small" data-field="price" data-match="1-5" @click=${this.handleFilterBtn.bind(this)}>$1-$5</sl-button>
             <sl-button class="filter-btn" size="small" data-field="price" data-match="6-10" @click=${this.handleFilterBtn.bind(this)}>$6-$10</sl-button>
             <sl-button class="filter-btn" size="small" data-field="price" data-match="11-15" @click=${this.handleFilterBtn.bind(this)}>$11-$15</sl-button>
+          </div>       
+          <div>
+            <strong>Genre</strong>
+            <sl-button class="filter-btn" size="small" data-field="genre" data-match="australiana" @click=${this.handleFilterBtn.bind(this)}>Australiana</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="genre" data-match="children" @click=${this.handleFilterBtn.bind(this)}>Children's Books</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="genre" data-match="educational" @click=${this.handleFilterBtn.bind(this)}>Educational</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="genre" data-match="fiction" @click=${this.handleFilterBtn.bind(this)}>Fiction</sl-button>
+            <sl-button class="filter-btn" size="small" data-field="genre" data-match="philosophy" @click=${this.handleFilterBtn.bind(this)}>Philosophy</sl-button>
           </div>
 
           <div>
             <sl-button size="small" @click=${this.clearFilters.bind(this)}>Clear Filters</sl-button>
           </div>
         </div> 
-
         <div class="books-grid"> 
           ${this.books == null ? html`
           <sl-spinner></sl-spinner>

@@ -1,12 +1,12 @@
-// Shoelace
 
-// sl-dialog
-sl-dialog::part(title){
-  font-weight: 500;
-  font-size: 1.6em;
+sl-button.botd-btn::part(base){
+  background-color: var(--brand-color);
+  font-family: var(--league);
+  color: var(--body-bg);
+  font-size: 1.1rem;
+  border-radius: 0;
+  padding: 0 1vw 0 1vw;
 }
-
-
 
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 

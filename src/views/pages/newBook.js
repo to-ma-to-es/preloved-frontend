@@ -81,10 +81,25 @@ class newBookView {
               </sl-radio-group>
             </div>
             <div class="input-group" style="margin-bottom: 2em;">
-              <sl-radio-group name="coverType" label="CoverType">
+              <sl-radio-group name="coverType" label="Cover Type">
                 <sl-radio value="paperback">Paperback</sl-radio>
                 <sl-radio value="hardcover">Hardcover</sl-radio>
               </sl-radio-group>
+            </div>
+            <div class="input-group" style="margin-bottom: 2em;">
+
+            <div class="input-group" style="margin-bottom: 2em;">
+              <sl-radio-group name="genre" label="Genre">
+                <sl-radio value="australiana">Australiana</sl-radio>
+                <sl-radio value="children">Children</sl-radio>
+                <sl-radio value="educational">Educational</sl-radio>
+                <sl-radio value="fiction">Fiction</sl-radio>
+                <sl-radio value="philosophy">Philosophy</sl-radio>
+              </sl-radio-group>
+            </div>
+            <div class="input-group" style="margin-bottom: 2em;">
+              
+
             </div>
             <sl-button variant="primary" type="submit" class="submit-btn">Add Book</sl-button>
           </form>

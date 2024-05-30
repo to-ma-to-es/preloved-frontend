@@ -16,7 +16,7 @@ customElements.define('va-book', class Book extends LitElement {
         type: String
       },
       name: {
-        type: String // this means that i can write <va-book title=" what user wants to set title to be here"></va-book>
+        type: String // this means that i can write <va-book name=" what user wants to set title to be here"></va-book>
       },
       author: {
         type: String 
@@ -41,6 +41,9 @@ customElements.define('va-book', class Book extends LitElement {
       }, 
       year: {
         type: String
+      },
+      genre: {
+        type: String
       }
     }
   }
@@ -60,6 +63,7 @@ customElements.define('va-book', class Book extends LitElement {
         .wrap {
             display: flex;
         }
+
         .image {
             width: 50%;
         }
@@ -89,6 +93,7 @@ customElements.define('va-book', class Book extends LitElement {
             <h2>${this.author}</h2>
             <p>${this.description}</p>
             <p class="price">$${this.price}</p>
+            <p class="genre">${this.genre}</p>
             <p class="condition">Condition: <span>${this.condition}</span></p>
             <p class="cover-type">Cover Type: <span>${this.coverType}</span></p>
             <p class="year">Year: <span>${this.year}</span></p>
@@ -145,7 +150,7 @@ customElements.define('va-book', class Book extends LitElement {
     return html`
     <style>
       sl-card::part(base) {
-        border: none;
+        border: none !important;
         background-color: var(--body-bg);
         box-shadow: none;
      }
@@ -167,6 +172,9 @@ customElements.define('va-book', class Book extends LitElement {
       color: var(--brand-color);
      }
 
+     h2 {
+      font-size: 1.2rem;
+     }
      p{
       color: #3f3f3f;
       margin: 0;

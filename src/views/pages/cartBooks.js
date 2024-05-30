@@ -51,6 +51,7 @@ class CartBooksView {
                   condition="${book.condition}"
                   coverType="${book.coverType}"
                   year="${book.year}"
+                  genre="${book.genre}"
                 >        
                 </va-book>
 
