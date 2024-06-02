@@ -1,4 +1,5 @@
 
+// book of the day btn
 sl-button.botd-btn::part(base){
   background-color: var(--brand-color);
   font-family: var(--league);
@@ -8,14 +9,59 @@ sl-button.botd-btn::part(base){
   padding: 0 1vw 0 1vw;
 }
 
+// search bar 
+sl-input.search-bar::part(base){
+  font-family: var(--regular);
+  margin-bottom: 2rem;
+}
+
+// filter btn
+sl-button.filter-btn::part(base){
+  background-color: transparent; // Fully transparent background 
+  justify-content: flex-start; // align text left
+  border: none;
+  font-family: var(--regular);
+  font-size: 1rem;
+  margin: 0.2rem 0 0.2rem 0;
+  color: #3f3f3f; 
+}
+
+// filter btn when active
+.filter-btn[variant="primary"]::part(base) {
+  font-family: var(--bold);
+  color: black; 
+}
+
+sl-button.clear-filter-btn::part(base) {
+  font-family: var(--regular);
+  font-size: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+
+// strong headings in filters
+strong {
+  font-weight: normal;
+}
+
+
+// cart btn 
+sl-button.cart-btn::part(base){
+  background-color: var(--brand-color);
+  font-family: var(--league);
+  color: var(--body-bg);
+  font-size: 1.1rem;
+  border-radius: 0;
+  padding: 0 2rem 0 2rem;
+}
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
-
+/* DONT THIMK I NEED THIS
   sl-dialog::part(panel) {
     width: 100%;
     height: 100%;
     max-height: none;
     max-width: none;
   }
+  */
 }
 

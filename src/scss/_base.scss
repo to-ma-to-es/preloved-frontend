@@ -38,8 +38,9 @@ body {
 
 // headings ------------
 h1,h2,h3,h5,h6 {
-  margin: 0 0 .5em;
+  margin: 0;
   color: var(--heading-color);
+  font-weight: normal;
 
 }
 
@@ -145,7 +146,7 @@ a {
   }
 }
 
-// home page ------------------
+// home page ----------------------------------------------------
 .page-content {
   margin: 0;
   padding: 0;
@@ -186,7 +187,6 @@ a {
         font-weight: 100;
         
       }
-
       h2 {
         font-size: 1.1rem;
         // font-weight: 100;
@@ -197,7 +197,6 @@ a {
           color: #3f3f3f;
         }
       }
-
       p {
         font-size: .95rem;
       }
@@ -207,9 +206,39 @@ a {
   }
   
 }
+// filter section ----
+
+.filter-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  // border: $border;
+  background-image: url('../../static/images/bg-paper.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  padding: 2em 2.2em 0 1.4em;
+
+  .filter-header {
+    font-family: var(--bold);
+    margin-bottom: 1.4em;
+  }
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    strong {
+      font-family: var(--bold);
+      color: #3f3f3f; 
+      margin-bottom: 0.4rem;
+    }
+  }
+  
+}
 
 @media all and (min-width: 768px){ 
-  
+  // home page ----------------------------------------------------
   .book-of-the-day-parent {
     display: flex;
     justify-content: center;
@@ -223,9 +252,24 @@ a {
 
     .botd-information {
       width: 60ch;
+      p {
+        margin-bottom: 1.6rem;
+      }
+    }
     }
   }
-}
+
+  // filter section
+  .filter-menu {
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .filter-and-books-parent {
+    display: flex;
+  }
 }
 
 
@@ -235,27 +279,28 @@ a {
   display: grid;
   gap: 2em;
   grid-template-columns: repeat(auto-fill, minmax(8em, 3fr));
-  border: solid red 3px;
+  margin: 4rem;
+  
+  // border: solid red 3px;
   .book-card {
     margin: 0.4rem;
   }
+
 }
 
 
 // books dialog
 .book-dialog {
   position: relative;
-  z-index: 100;
-  background-color: aqua;
+  z-index: 10;
+  background-color: var(--body-bg);
+
 }
 
 .book-dialog::part(body){
   margin-top: -4em;
 }
 
-.book-dialog::part(header-actions) {
-  z-index: 1;
-}
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
 

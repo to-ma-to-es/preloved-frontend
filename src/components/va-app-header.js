@@ -70,8 +70,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         margin-left: 1rem;
       }
       .app-header {
-        /* background: var(--brand-color); */
-        background: #FFFEF5;
+        background: var(--body-bg);
         position: fixed;
         top: 0;
         right: 0;
@@ -79,8 +78,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         height: var(--app-header-height);
         color: var(--brand-color);
         display: flex;
-        z-index: 9;
-        box-shadow: 4px 0px 10px rgba(0,0,0,0.2); 
+        z-index: 11;
         justify-content: space-between; /* Pushes h1 and navigation to opposite sides of the screen */
         align-items: center;
       }

@@ -36,6 +36,7 @@ class ProfileView {
         
 
         <sl-button @click=${()=> gotoRoute('/editProfile')}>Edit Profile</sl-button>
+        <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
       </div>      
     `
     render(template, App.rootEl)

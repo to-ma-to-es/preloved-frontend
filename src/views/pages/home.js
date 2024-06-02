@@ -91,14 +91,6 @@ class HomeView {
   render(){
     const template = html`
     <style>
-      .filter-menu {
-        display: flex;
-        align-items: center;
-      }
-
-      .filter-menu > div {
-        margin-right: 1em;
-      }
 
     </style>
       <va-app-header title="Books" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
@@ -113,65 +105,69 @@ class HomeView {
               <p>"There shouldn’t be a Citrus County. Teenage romance should be difficult, but not this difficult. Boys like Toby should cause trouble but not this much. The moon should glow gently over children safe in their beds..." </p>
               <sl-button class="botd-btn">CHECK IT OUT</sl-button>
             </div>
+          </div>
+        </div>     
         
-          </div>
-        </div>       
-        <div class="filter-menu">
-          <div>
-            Filter by
-          </div>
-          <div>
-            <strong>Condition</strong>
-            <sl-button class="filter-btn" size="small" data-field="condition" data-match="fair" @click=${this.handleFilterBtn.bind(this)}>Fair</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="condition" data-match="good" @click=${this.handleFilterBtn.bind(this)}>Good</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="condition" data-match="excellent" @click=${this.handleFilterBtn.bind(this)}>Excellent</sl-button>
-          </div>
-          <div>
-            <strong>Cover Type</strong>
-            <sl-button class="filter-btn" size="small" data-field="coverType" data-match="paperback" @click=${this.handleFilterBtn.bind(this)}>Paperback</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="coverType" data-match="hardcover" @click=${this.handleFilterBtn.bind(this)}>Hardcover</sl-button>
-          </div>
-          <div>
-            <strong>Price</strong>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="1-5" @click=${this.handleFilterBtn.bind(this)}>$1-$5</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="6-10" @click=${this.handleFilterBtn.bind(this)}>$6-$10</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="price" data-match="11-15" @click=${this.handleFilterBtn.bind(this)}>$11-$15</sl-button>
-          </div>       
-          <div>
-            <strong>Genre</strong>
-            <sl-button class="filter-btn" size="small" data-field="genre" data-match="australiana" @click=${this.handleFilterBtn.bind(this)}>Australiana</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="genre" data-match="children" @click=${this.handleFilterBtn.bind(this)}>Children's Books</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="genre" data-match="educational" @click=${this.handleFilterBtn.bind(this)}>Educational</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="genre" data-match="fiction" @click=${this.handleFilterBtn.bind(this)}>Fiction</sl-button>
-            <sl-button class="filter-btn" size="small" data-field="genre" data-match="philosophy" @click=${this.handleFilterBtn.bind(this)}>Philosophy</sl-button>
-          </div>
+        <div class="filter-and-books-parent">
+          <div class="filter-menu">
+            <sl-input class="search-bar" placeholder="Search Books/Authors"><sl-icon name="search" slot="prefix"></sl-icon></sl-input>
+            <div class="filter-header">
+              Filters 
+              <i class="fa-solid fa-filter"></i>
+            </div>
+            <div class="btn-container">
+              <strong>Genre</strong>
+              <sl-button class="filter-btn" size="small" data-field="genre" data-match="australiana" @click=${this.handleFilterBtn.bind(this)}>Australiana</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="genre" data-match="children" @click=${this.handleFilterBtn.bind(this)}>Children's Books</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="genre" data-match="educational" @click=${this.handleFilterBtn.bind(this)}>Educational</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="genre" data-match="fiction" @click=${this.handleFilterBtn.bind(this)}>Fiction</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="genre" data-match="philosophy" @click=${this.handleFilterBtn.bind(this)}>Philosophy</sl-button>
+            </div>
+            <div class="btn-container">
+              <strong>Condition</strong>
+              <sl-button class="filter-btn" size="small" data-field="condition" data-match="fair" @click=${this.handleFilterBtn.bind(this)}>Fair</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="condition" data-match="good" @click=${this.handleFilterBtn.bind(this)}>Good</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="condition" data-match="excellent" @click=${this.handleFilterBtn.bind(this)}>Excellent</sl-button>
+            </div>
+            <div class="btn-container">
+              <strong>Cover Type</strong>
+              <sl-button class="filter-btn" size="small" data-field="coverType" data-match="paperback" @click=${this.handleFilterBtn.bind(this)}>Paperback</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="coverType" data-match="hardcover" @click=${this.handleFilterBtn.bind(this)}>Hardcover</sl-button>
+            </div>
+            <div class="btn-container">
+              <strong>Price</strong>
+              <sl-button class="filter-btn" size="small" data-field="price" data-match="1-5" @click=${this.handleFilterBtn.bind(this)}>$1-$5</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="price" data-match="6-10" @click=${this.handleFilterBtn.bind(this)}>$6-$10</sl-button>
+              <sl-button class="filter-btn" size="small" data-field="price" data-match="11-15" @click=${this.handleFilterBtn.bind(this)}>$11-$15</sl-button>
+            </div>       
 
-          <div>
-            <sl-button size="small" @click=${this.clearFilters.bind(this)}>Clear Filters</sl-button>
-          </div>
-        </div> 
-        <div class="books-grid"> 
-          ${this.books == null ? html`
-          <sl-spinner></sl-spinner>
-          `: html`
-          ${this.books.map(book => html`
-            <va-book class="book-card" 
-              id="${book._id}"
-              name="${book.name}" 
-              author="${book.author}"
-              description="${book.description}"
-              price="${book.price}"
-              user="${JSON.stringify(book.user)}"
-              image="${book.image}"
-              condition="${book.condition}"
-              coverType="${book.coverType}"
-              year="${book.year}">
+            <div class="btn-container">
+              <sl-button class="clear-filter-btn"size="small" @click=${this.clearFilters.bind(this)}>Clear Filters</sl-button>
+            </div>
+          </div> 
+          <div class="books-grid"> 
+            ${this.books == null ? html`
+            <sl-spinner></sl-spinner>
+            `: html`
+            ${this.books.map(book => html`
+              <va-book class="book-card" 
+                id="${book._id}"
+                name="${book.name}" 
+                author="${book.author}"
+                description="${book.description}"
+                price="${book.price}"
+                user="${JSON.stringify(book.user)}"
+                image="${book.image}"
+                condition="${book.condition}"
+                coverType="${book.coverType}"
+                year="${book.year}"
+                genre="${book.genre}">
 
-          </va-book>
-          `)}
-          `}
+            </va-book>
+            `)}
+            `}
+          </div>
         </div>
-        
       </div>      
     `
     render(template, App.rootEl)

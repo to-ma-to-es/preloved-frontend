@@ -37,4 +37,5 @@
   --sl-color-primary-800: #{darken($brand-color, 30%)};
   --sl-color-primary-900: #{darken($brand-color, 40%)};
   --sl-focus-ring-color-primary: #{rgba($brand-color, 0.1)};
+  --sl-input-focus-ring-color: hsla(129, 34%, 31%, 0.4);
 }

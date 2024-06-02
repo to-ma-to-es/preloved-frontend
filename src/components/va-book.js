@@ -60,54 +60,172 @@ customElements.define('va-book', class Book extends LitElement {
     // sl-dialog content
    const dialogContent = html`
     <style>
+      /* for desktop screens ------------------------------ */
+      @media all and (min-width: 768px){
+        
         .wrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100vh;
+        }
+        .listing-wrap {
             display: flex;
-        }
-
+            align-self: center;
+            align-items: center;
+            justify-content: center;
+            max-width: 80%;
+          }
+  
         .image {
-            width: 50%;
+          max-width: 30%;
         }
-        .image img {
-            width: 100%;
-        }
-        .content {
-            padding-left: 1em;
-        }
-        .condition span,
-        .cover-type span, 
-        .year span {
-            text-transform: capitalize;
-            color: #3f3f3f;
-        }
-        .price {
-            font-size: 1.5em;
-        }
-    </style>
-        <div class="wrap">
-        <button id="backButton">back</button>
-        <div class="image">
-            <img src="${App.apiBase}/images/${this.image}" />
-        </div>
-        <div class="content">
-            <h1>${this.name}</h1>
-            <h2>${this.author}</h2>
-            <p>${this.description}</p>
-            <p class="price">$${this.price}</p>
-            <p class="genre">${this.genre}</p>
-            <p class="condition">Condition: <span>${this.condition}</span></p>
-            <p class="cover-type">Cover Type: <span>${this.coverType}</span></p>
-            <p class="year">Year: <span>${this.year}</span></p>
 
-            <sl-button @click=${this.addFavHandler.bind(this)}>
-            <sl-icon slot="prefix" name="heart-fill"></sl-icon>
-            Add to Favourites
-            </sl-button>
-            <sl-button @click=${this.addCaHandler.bind(this)}>
-            <sl-icon slot="prefix" name="cart"></sl-icon>
-            Add to Cart
-            </sl-button>
+        .content {
+          margin-left: 2rem;
+        }
+        #description {
+          max-width: 90ch;
+        }
+
+        .info-cart-section {
+          display: flex;
+          align-items: center;
+        }
+
+        #backButton {
+          margin-left: 10vw;
+        }
+      }
+
+      /* Heading */
+      h1 {
+        font-family: var(--league);
+        text-transform: uppercase;
+        font-size: 2.5rem;
+      }
+
+      /* author-wishlist content */
+      .author-wishlist-section {
+        display: flex;
+        align-items: center;
+      }
+      /* Wishlist */
+      #wishlist {
+        margin-left: 2rem;
+      }
+
+      /* Wishlist icon button */
+      .fav-star {
+      padding: 0 0 0.1rem 0.2rem;
+      color: var(--brand-color);
+      }
+
+      /* Description */
+      #description {
+        line-height: 1.4;
+      }
+
+      /* Genre section */
+      .genre-section {
+        display: flex;
+      }
+
+      .genre {
+        border-bottom: var(--brand-color) solid 2px;
+        max-width: 5rem;
+        text-align: center;
+        margin-left: 1rem;
+      }
+
+      /* info-cart section */
+      .info-cart-section p {
+        margin-right: 3rem;
+        line-height: 2;
+        text-align: center;
+      }
+
+      .price {
+        background-color: #ebefd8;
+        padding: 0 1rem 0 1rem;
+      }
+
+      /* Image */
+      .image img {
+          width: 100%;
+      }
+
+      /* Written content */
+      .content {
+          padding-left: 1em;
+      }
+
+      /* General styles */
+      .condition span,
+      .cover-type span, 
+      .year span, .price span, .genre {
+          text-transform: capitalize;
+      }
+
+      .condition span,
+      .cover-type span, 
+      .year span, .price span, .genre-heading, #wishlist {
+          color: #7f7f7f;
+      }
+
+      /* Back btn */
+      #backButton {
+        border: none;
+        max-width: 6rem;
+        font-family: var(--bold);
+        font-size: 1.4rem;
+        background-color: transparent;
+        padding: .5rem; /* more click space */
+        margin-bottom: 2rem;
+      }
+
+      #backButton i {
+        font-size: 1.2rem;
+      }
+
+    </style>
+      
+      <div class="wrap">
+      <button id="backButton"><i class="fa-solid fa-caret-left"></i>Back</button>
+
+        <div class="listing-wrap">
+          
+          <div class="image">
+              <img src="${App.apiBase}/images/${this.image}" />
+          </div>
+          <div class="content">
+              <h1>${this.name}</h1>
+              <div class="author-wishlist-section">
+                <p>${this.author}</p>
+                <p id="wishlist">Wishlist</p>
+                <sl-icon-button class="fav-star" name="star" label="Add to favourites" @click=${this.addFavHandler.bind(this)}></sl-icon-button>
+              </div>
+              <p id="description">${this.description}</p>
+              <div class="genre-section">
+                <p class="genre-heading">Genres</p>
+                <p class="genre">${this.genre}</p>
+              </div>
+              
+              <div class="info-cart-section">
+                <p class="condition">Condition <br><span>${this.condition}</span></p>
+                <p class="cover-type">Cover <br><span>${this.coverType}</span></p>
+                <p class="year">Year <br><span>${this.year}</span></p>
+                <p class="price">Price <br><span>$${this.price}</span></p>
+                
+                
+                <sl-button class="cart-btn" @click=${this.addCaHandler.bind(this)}>
+                <sl-icon slot="suffix" name="cart"></sl-icon>
+                ADD TO CART
+                </sl-button>
+              </div>
+          </div>
         </div>
-        </div>
+      </div>
 `
     
     render(dialogContent, dialogEl)
@@ -115,8 +233,13 @@ customElements.define('va-book', class Book extends LitElement {
     await document.body.append(dialogEl)
 
     const backButton = document.querySelector('#backButton')
+    const header = document.querySelector('.app-header')
 
     backButton.addEventListener('click', () => {
+      dialogEl.remove();
+    })
+
+    header.addEventListener('click', () => {
       dialogEl.remove();
     })
     /* // show sl-dialog
@@ -149,15 +272,15 @@ customElements.define('va-book', class Book extends LitElement {
   render(){    
     return html`
     <style>
+
       sl-card::part(base) {
         border: none !important;
         background-color: var(--body-bg);
         box-shadow: none;
-     }
+      }
 
-     sl-card::part(body){
-      font-size: .9rem;
-      padding: 0;
+      sl-card::part(body){
+        padding: 0;
      }
 
      .price-section {
@@ -180,9 +303,20 @@ customElements.define('va-book', class Book extends LitElement {
       margin: 0;
       padding:0;
      }
+
+    /* Enlarge animation */
+    sl-card { 
+      cursor: pointer;
+      transition: transform 0.15s ease-in-out;
+    }
+
+    sl-card:hover {
+      transform: scale(1.03);
+    }
+
     </style>
 
-    <sl-card>
+    <sl-card class="listing">
         <img slot="image" src="${App.apiBase}/images/${this.image}" @click=${this.moreInfoHandler.bind(this)}>
         <h2 @click=${this.moreInfoHandler.bind(this)}>${this.name}</h2>
         <p @click=${this.moreInfoHandler.bind(this)}>${this.author}</p>
