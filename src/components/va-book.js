@@ -188,12 +188,29 @@ customElements.define('va-book', class Book extends LitElement {
         font-size: 1.2rem;
       }
 
+      /* Animation */
+      @keyframes fadeInDown {
+        0% {
+          transform: translateY(-2%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0%);
+          opacity: 1;
+        }
+      }
+
+      .fadeInDown-animation {
+        animation: .5s fadeInDown;
+      }
+   
+
     </style>
       
       <div class="wrap">
       <button id="backButton"><i class="fa-solid fa-caret-left"></i>Back</button>
 
-        <div class="listing-wrap">
+        <div class="listing-wrap fadeInDown-animation">
           
           <div class="image">
               <img src="${App.apiBase}/images/${this.image}" />
@@ -235,13 +252,16 @@ customElements.define('va-book', class Book extends LitElement {
     const backButton = document.querySelector('#backButton')
     const header = document.querySelector('.app-header')
 
+    // remove div when back btn is pressed
     backButton.addEventListener('click', () => {
       dialogEl.remove();
     })
 
+    // also remove div when a header btn / a tag is pressed 
     header.addEventListener('click', () => {
       dialogEl.remove();
     })
+
     /* // show sl-dialog
     dialogEl.show()
 
@@ -272,7 +292,7 @@ customElements.define('va-book', class Book extends LitElement {
   render(){    
     return html`
     <style>
-
+      /* Card Styling */
       sl-card::part(base) {
         border: none !important;
         background-color: var(--body-bg);
@@ -287,9 +307,8 @@ customElements.define('va-book', class Book extends LitElement {
       display: flex;
       justify-content: space-between; 
       align-items: center;
-      color: #3f3f3f;
-      
      }
+
      .fav-star {
       padding-bottom: .5rem;
       color: var(--brand-color);
@@ -298,12 +317,16 @@ customElements.define('va-book', class Book extends LitElement {
      h2 {
       font-size: 1.2rem;
      }
+
      p{
-      color: #3f3f3f;
       margin: 0;
       padding:0;
      }
 
+     .price-section, p {
+      color: #3f3f3f;
+     }
+     
     /* Enlarge animation */
     sl-card { 
       cursor: pointer;

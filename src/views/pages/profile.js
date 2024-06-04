@@ -16,27 +16,30 @@ class ProfileView {
   render(){
     const template = html`
       <va-app-header title="Profile" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content calign">        
-        ${Auth.currentUser && Auth.currentUser.avatar ? html`
-          <sl-avatar style="--size: 200px; margin-bottom: 1em;" image=${(Auth.currentUser && Auth.currentUser.avatar) ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}></sl-avatar>
-        `:html`
-        <sl-avatar style="--size: 200px; margin-bottom: 1em;"></sl-avatar>
-        `}
-        <h2>${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h2>
-        <p>${Auth.currentUser.email}</p>
-        
-        <p>Updated: ${moment(Auth.currentUser.updatedAt).format('MMMM Do YYYY, @ h:mm a')}</p>
-        
-        <!--  if there is bio, display bio, if not, display nothing --> 
-        ${Auth.currentUser.bio ? html`
-        <h3>Bio</h3>
-        <p>${Auth.currentUser.bio}</p>
-        ` : html``
-        }
-        
+      <div class="page-content account-page">       
+        <div class="profile-info">
+          ${Auth.currentUser && Auth.currentUser.avatar ? html`
+            <sl-avatar style="--size: 200px; margin-bottom: 1em;" image=${(Auth.currentUser && Auth.currentUser.avatar) ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}></sl-avatar>
+          `:html`
+          <sl-avatar style="--size: 200px; margin-bottom: 1em;"></sl-avatar>
+          `}
+          <h2>${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h2>
+          <p>${Auth.currentUser.email}</p>
+          
+          <p>Updated: ${moment(Auth.currentUser.updatedAt).format('MMMM Do YYYY, @ h:mm a')}</p>
+          
+          <!--  if there is bio, display bio, if not, display nothing --> 
+          ${Auth.currentUser.bio ? html`
+          <h3>Bio</h3>
+          <p>${Auth.currentUser.bio}</p>
+          ` : html``
+          }
+          
 
-        <sl-button @click=${()=> gotoRoute('/editProfile')}>Edit Profile</sl-button>
-        <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
+          <sl-button @click=${()=> gotoRoute('/editProfile')}>Edit Profile</sl-button>
+          <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
+
+        </div> 
       </div>      
     `
     render(template, App.rootEl)

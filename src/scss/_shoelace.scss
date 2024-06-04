@@ -1,4 +1,3 @@
-
 // book of the day btn
 sl-button.botd-btn::part(base){
   background-color: var(--brand-color);
@@ -43,7 +42,6 @@ strong {
   font-weight: normal;
 }
 
-
 // cart btn 
 sl-button.cart-btn::part(base){
   background-color: var(--brand-color);
@@ -52,6 +50,16 @@ sl-button.cart-btn::part(base){
   font-size: 1.1rem;
   border-radius: 0;
   padding: 0 2rem 0 2rem;
+}
+
+// checkout btn
+sl-button.checkout-btn::part(base){
+  background-color: var(--brand-color);
+  font-family: var(--league);
+  color: var(--body-bg);
+  font-size: 1.1rem;
+  border-radius: 0;
+  padding: 0 1vw 0 1vw;
 }
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
@@ -64,4 +72,6 @@ sl-button.cart-btn::part(base){
   }
   */
 }
+
+
 

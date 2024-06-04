@@ -237,6 +237,76 @@ a {
   
 }
 
+// Cart page ----------------------------------------------------
+.cart-total-flex {
+  margin-bottom: 10rem;
+}
+.cart-books-section {
+  h1 {
+    font-family: var(--league);
+    color: var(--brand-color);
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+}
+
+.total-section {
+  padding: 0 2rem 0 2rem;
+  h2 {
+    font-family: var(--league);
+    color: var(--brand-color);
+    text-align: center;
+    font-size: 2.4rem;
+  }
+  
+  .book-summaries {
+    max-width: 20rem;
+    .book-summary {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        font-family: var(--bold);
+
+        span {
+          font-family: var(--regular);
+          color: #3f3f3f;
+        }
+      }
+    }
+  }
+  .total {
+    font-family: var(--bold);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 1rem 0 1rem 0;
+    background-color: #ebefd8;
+  }
+}
+
+.checkout-section {
+  // border: solid green 3px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 5rem;
+  background-image: url('../../static/images/checkout-banner.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  .checkout-btn {
+    margin-right: 2rem;
+  }
+}
+
+
 @media all and (min-width: 768px){ 
   // home page ----------------------------------------------------
   .book-of-the-day-parent {
@@ -270,6 +340,35 @@ a {
   .filter-and-books-parent {
     display: flex;
   }
+
+  // Cart page ----------------------------------------------
+   .cart-total-flex {
+    display: flex;
+  } 
+  .cart-books-section {
+    min-width: 60vw;
+    h1 {
+      text-align: left;
+      margin: 0 0 2rem 4rem;
+    }
+    .cart-grid {
+      margin: 0 2rem 0 4rem;
+    }
+  }
+
+  .total-section {
+    padding: 0 4rem;
+    border-left: solid 3px var(--brand-color);
+    min-height: 70vh;
+    h2 {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .book-summaries {
+      min-width: 20rem;
+    }
+  }
+
 }
 
 
@@ -285,7 +384,7 @@ a {
   .book-card {
     margin: 0.4rem;
   }
-
+  
 }
 
 
@@ -308,4 +407,5 @@ a {
     width: 90%;
     max-width: none;
   }
+
 }
