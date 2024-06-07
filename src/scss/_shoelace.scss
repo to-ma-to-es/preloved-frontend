@@ -64,7 +64,7 @@ sl-button.checkout-btn::part(base){
 
 // account btns
 
-sl-button.account-btn::part(base){
+sl-button.account-btn::part(base), .login-btn::part(base){
   border: solid var(--brand-color) 1px;
   background-color: #EBEFD8;
   border-radius: 2;
@@ -86,7 +86,7 @@ sl-button.sign-out-btn::part(base){
 
 // form inputs 
 
-sl-input.new-book-input::part(base), sl-input.edit-profile-input::part(base){
+sl-input.new-book-input::part(base), sl-input.edit-profile-input::part(base), .login-input::part(base){
   border: none; // clearing auto borders
   border-bottom: solid black 1px;
   background-color: transparent;
@@ -114,7 +114,7 @@ sl-button.add-btn::part(base){
   padding: 0 0.5rem;
 }
 
-sl-button.submit-btn::part(base){
+sl-button.account-submit-btn::part(base), .listing-submit-btn::part(base){
   background-color: var(--brand-color);
   color: var(--body-bg);
   border: solid var(--brand-color) 1px;

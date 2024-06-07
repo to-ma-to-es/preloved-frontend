@@ -123,17 +123,8 @@ a {
   justify-content: center;
 }
 
-// sign in + sign up pages ----------
-.signinup-box,
-.signup-box {  
-  max-width: 320px;
-  text-align: center;
-}
 
-.signinup-logo {
-  width: 200px;
-  margin-bottom: 1em;
-}
+
 
 // guide page ---------------
 .guide-step {
@@ -437,8 +428,73 @@ a {
   }
 }
 
+// sign in + sign up pages ----------
+
+.signin-icons {
+  width: 2rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.login-graphic {
+  display: none;
+}
+.auth-page {
+  top: 0; // overriding page-content header
+
+}
+.login-section {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+  h1 {
+    font-family: var(--league);
+    color: var(--brand-color);
+    font-size: 3rem;
+  }
+  .signinup-box,
+  .signup-box { 
+    color: #5d5d5d;
+
+    .input-group {
+      margin-top: 2rem;
+    }
+
+    .login-btn {
+      width: 100%;
+      margin: 1rem 0 0.4rem 0;
+    }
+  }
+}
+
 /* Media query for desktop screens */
 @media all and (min-width: 768px){ 
+
+  // Log in Page -----------------------------------------
+  .login-graphic {
+    display: block;
+    height: 100vh;
+    width: 50vw;
+    object-fit: cover;
+  }
+  .login-flex {
+    display: flex;
+    align-items: center;
+
+    .login-section {
+      width: 50vw;
+      text-align: left;
+
+      .login-btn {
+        width: 70%;
+      }
+    }
+    .signinup-box,
+    .signup-box { 
+     max-width: 40%;
+    }
+
+
+  }
   // Edit account page -----------------------------------------
 
   .edit-flex {

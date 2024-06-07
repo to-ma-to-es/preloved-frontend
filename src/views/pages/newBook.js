@@ -136,7 +136,7 @@ class newBookView {
             </div>  
 
             <sl-button class="add-btn">Add Another Listing <i class="fa-solid fa-circle-plus"></i></sl-button>
-            <sl-button  type="submit" class="submit-btn">Post Book Listing</sl-button>
+            <sl-button  type="submit" class="submit-btn listing-submit-btn">Post Book Listing</sl-button>
             
           </form>
         </div>
