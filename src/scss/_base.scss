@@ -338,6 +338,10 @@ a {
 
 
 // New Book page -------------------------------------------------
+/* x icon used on other screens */
+.x-lg {
+  font-size: 1.6rem;
+}
 
 .new-book-page {
 
@@ -349,10 +353,6 @@ a {
 
     h1 {
       font-family: var(--league);
-    }
-
-    .x-lg {
-      font-size: 1.6rem;
     }
   }
 
@@ -395,8 +395,59 @@ a {
 
 }
 
+// Edit account page -------------------------------------------------
 
+.edit-page {
+  background-image: url('../../static/images/account-bg.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .input-validation-required {
+    
+    background-color: var(--body-bg);
+    padding: 3rem 6rem;
+    h1 {
+      font-family: var(--league);
+    }
+    
+    .edit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .edit-profile-input, .edit-profile-textarea {
+      margin: 2rem 0;
+    }
+
+    .avatar-label {
+      font-family: var(--bold);
+    }
+    .button-wrapper {
+      display: flex; 
+      justify-content: center;
+      margin-top: 2rem;
+      .submit-btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Media query for desktop screens */
 @media all and (min-width: 768px){ 
+  // Edit account page -----------------------------------------
+
+  .edit-flex {
+    display: flex;
+
+    .edit-section-two {
+      margin-left: 4rem;
+    }
+  }
   // New book page   -------------------------------------------------
 
   .center {
@@ -522,7 +573,12 @@ a {
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
 
+  // edit profile page --------------------------
+  .input-validation-required {
+    margin-top: 6rem;
+  }
 
+  // Sign up
   .signinup-box {
     width: 90%;
     max-width: none;

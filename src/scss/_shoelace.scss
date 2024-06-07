@@ -86,7 +86,7 @@ sl-button.sign-out-btn::part(base){
 
 // form inputs 
 
-sl-input.new-book-input::part(base){
+sl-input.new-book-input::part(base), sl-input.edit-profile-input::part(base){
   border: none; // clearing auto borders
   border-bottom: solid black 1px;
   background-color: transparent;
@@ -95,7 +95,8 @@ sl-input.new-book-input::part(base){
   --sl-input-focus-ring-color: hsla(210, 100%, 50%, 0); // removes focus ring
 }
 
-.new-book-input::part(form-control-label){
+.new-book-input::part(form-control-label), .edit-profile-input::part(form-control-label),
+.edit-profile-textarea::part(form-control-label){
   font-family: var(--bold);
 }
 
@@ -116,7 +117,15 @@ sl-button.add-btn::part(base){
 sl-button.submit-btn::part(base){
   background-color: var(--brand-color);
   color: var(--body-bg);
+  border: solid var(--brand-color) 1px;
+  border-radius: 2;
+  font-family: var(--regular);
+  font-size: 1rem;
 }
+
+
+
+
 
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
