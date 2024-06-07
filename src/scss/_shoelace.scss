@@ -61,6 +61,63 @@ sl-button.checkout-btn::part(base){
   border-radius: 0;
   padding: 0 1vw 0 1vw;
 }
+
+// account btns
+
+sl-button.account-btn::part(base){
+  border: solid var(--brand-color) 1px;
+  background-color: #EBEFD8;
+  border-radius: 2;
+  font-family: var(--regular);
+  font-size: 1rem;
+  color: var(--brand-color);
+}
+
+
+// sign out btn 
+sl-button.sign-out-btn::part(base){
+  background-color: var(--brand-color);
+  font-family: var(--league);
+  color: var(--body-bg);
+  font-size: 1.3rem;
+  border-radius: 2;
+
+}
+
+// form inputs 
+
+sl-input.new-book-input::part(base){
+  border: none; // clearing auto borders
+  border-bottom: solid black 1px;
+  background-color: transparent;
+  border-radius: 0;
+  font-family: var(--regular);
+  --sl-input-focus-ring-color: hsla(210, 100%, 50%, 0); // removes focus ring
+}
+
+.new-book-input::part(form-control-label){
+  font-family: var(--bold);
+}
+
+sl-radio::part(base), sl-textarea::part(base), sl-button.submit-btn::part(base), sl-button.add-btn::part(base){
+  font-family: var(--regular);
+}
+
+sl-radio-group::part(form-control-label){
+  font-family: var(--bold);
+}
+
+// form btns
+sl-button.add-btn::part(base){
+  background-color: #EBEFD8;
+  padding: 0 0.5rem;
+}
+
+sl-button.submit-btn::part(base){
+  background-color: var(--brand-color);
+  color: var(--body-bg);
+}
+
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
 /* DONT THIMK I NEED THIS

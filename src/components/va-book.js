@@ -203,8 +203,13 @@ customElements.define('va-book', class Book extends LitElement {
       .fadeInDown-animation {
         animation: .5s fadeInDown;
       }
-   
-
+      
+      /* Responsive resize for mobile */
+      @media all and (max-width: 768px) {
+        #description {
+          padding: 0 0.5rem;
+        }
+      }
     </style>
       
       <div class="wrap">

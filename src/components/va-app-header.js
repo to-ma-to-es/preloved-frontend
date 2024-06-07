@@ -180,6 +180,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
     
       <nav class="app-top-nav">
+        <a href="/"  @click="${anchorRoute}">Books</a>
         <a href="/aboutus" @click="${anchorRoute}">About Us</a>
         <a href="/profile" @click="${anchorRoute}">My Account <i class="fa-regular fa-user"></i></a>
         <a href="/favouritebooks" @click="${anchorRoute}">Wishlist <i class="fa-regular fa-star"></i></a> 

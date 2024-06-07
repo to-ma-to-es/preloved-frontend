@@ -306,8 +306,127 @@ a {
   }
 }
 
+// Account page ---------------------------------------------------
+
+.account-page {
+  
+  .profile-photo {
+    text-align: center;
+  }
+  .profile-info {
+    padding-bottom: 5em;
+    text-align: center;
+    h1 {
+      font-family: var(--league);
+      color: var(--brand-color);
+      font-size: 2.4rem;
+
+    }
+    background-color: var(--body-bg);
+    // border: $border;
+    
+    .account-btn {
+      margin: 0 0.4rem;
+    }
+
+    .sign-out-btn {
+      margin-top: 2rem;
+    }
+ 
+  }
+}
+
+
+// New Book page -------------------------------------------------
+
+.new-book-page {
+
+  .add-listing-header {
+    display: flex;
+    align-items: center;
+    margin: 0 4rem 2rem 4rem;
+    justify-content: space-between;
+
+    h1 {
+      font-family: var(--league);
+    }
+
+    .x-lg {
+      font-size: 1.6rem;
+    }
+  }
+
+
+  #frame {
+    width: 12rem;
+    height: 20rem;
+    background-color: #ebefd8;
+    object-fit: cover;
+  }
+
+  //make input invis
+  input[type=file] {
+    display: none;
+  }
+
+  // custom input btn
+  .custom-file-input {
+    background-color: var(--brand-color);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2rem;
+  }
+  
+  .file-group {
+    // border: $border;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 20rem;
+
+  }
+
+  .add-btn {
+    margin: 0 1rem 2rem 0;
+  }
+
+}
+
 
 @media all and (min-width: 768px){ 
+  // New book page   -------------------------------------------------
+
+  .center {
+    display: flex;
+    justify-content: center;
+  
+    .form-flex {
+      display: flex;
+      
+      .text-inputs, .radio-inputs {
+        margin-left: 5rem;
+      }
+    }
+}
+  // account page -------------------------------------------------
+
+  .account-page {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+
+    .profile-photo {
+      margin: 0 0 2rem 0;
+    }
+    .profile-info {
+      max-width: 50rem;
+    }
+  }
+
   // home page ----------------------------------------------------
   .book-of-the-day-parent {
     display: flex;
@@ -403,9 +522,33 @@ a {
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
 
+
   .signinup-box {
     width: 90%;
     max-width: none;
+  }
+
+  // profile
+  .profile-info {
+    p {
+      padding: 0 1rem;
+    }
+    .account-btns {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  // New book page   -------------------------------------------------
+ 
+  .file-group {
+    align-items: center;
+  }
+  .page-form {
+    padding: 0 2rem;
+  }
+  .radio-inputs {
+    margin-top: 2rem;
   }
 
 }
