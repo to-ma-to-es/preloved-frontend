@@ -37,7 +37,7 @@ body {
 
 
 // headings ------------
-h1,h2,h3,h5,h6 {
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
   color: var(--heading-color);
   font-weight: normal;
@@ -63,8 +63,10 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  .app-logo {
-    width: 180px;
+  h1 {
+    font-family: var(--league);
+    font-size: 3rem;
+    color: var(--brand-color);
     display: block;
     margin-bottom: 1em;
   }
@@ -127,13 +129,35 @@ a {
 
 
 // guide page ---------------
-.guide-step {
-  padding: 1em;
-  margin: 1.5em auto;
-  max-width: 600px;
-  img {
-    width: 100%;
-    height: auto;
+.guide-page {
+  sl-button {
+    margin-bottom: 2rem;
+  }
+  p {
+    font-family: var(--league);
+    font-size: 1.8rem;
+    color: var(--brand-color);
+  }
+  .guide-step {
+    padding: 1em;
+    margin: 1.5em auto;
+    max-width: 20rem;
+
+    h4 {
+      font-family: var(--bold);
+      margin-bottom: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .guide-icon {
+      font-size: 1.2rem;
+      color: var(--brand-color);
+    }
   }
 }
 
@@ -466,9 +490,28 @@ a {
   }
 }
 
+// Wishlist page
+
+.wishlist-page {
+  h1 {
+    font-family: var(--league);
+    color: var(--brand-color);
+    text-align: center;
+    font-size: 2.4rem;
+  }
+}
+
 /* Media query for desktop screens */
 @media all and (min-width: 768px){ 
 
+  // Wishlist Page 
+
+  .wishlist-page, .cart-books-section {
+    h1 {
+      text-align: left;
+      margin: 0 0 2rem 4rem;
+    }
+  }
   // Log in Page -----------------------------------------
   .login-graphic {
     display: block;
@@ -573,10 +616,6 @@ a {
   } 
   .cart-books-section {
     min-width: 60vw;
-    h1 {
-      text-align: left;
-      margin: 0 0 2rem 4rem;
-    }
     .cart-grid {
       margin: 0 2rem 0 4rem;
     }
@@ -628,6 +667,7 @@ a {
 
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
+
 
   // edit profile page --------------------------
   .input-validation-required {

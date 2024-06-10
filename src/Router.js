@@ -6,8 +6,6 @@ import signupView from './views/pages/signup'
 import profileView from './views/pages/profile'
 import editProfileView from './views/pages/editProfile'
 import guideView from './views/pages/guide'
-import hairdressersView from './views/pages/hairdressers'
-import booksView from './views/pages/books'
 import favouriteBooksView from './views/pages/favouriteBooks' 
 import newBookView from './views/pages/newBook'
 import cartBooksView from './views/pages/cartBooks'
@@ -16,8 +14,6 @@ import cartBooksView from './views/pages/cartBooks'
 const routes = {
 	'/': homeView,	
 	'/guide': guideView,
-	'/hairdressers': hairdressersView,
-	'/books': booksView,
 	'/favouritebooks': favouriteBooksView,
 	'404' : fourOFourView,
 	'/signin': signinView,

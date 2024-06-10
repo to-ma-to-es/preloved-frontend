@@ -152,11 +152,6 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         font-size: var(--app-header-title-font-size);
       }
 
-      /* active nav links */
-      .app-top-nav a.active,
-      .app-side-menu-items a.active {
-        font-weight: 400;
-      }
 
       /* RESPONSIVE - MOBILE ------------------- */
       @media all and (max-width: 768px){       
@@ -180,34 +175,28 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
     
       <nav class="app-top-nav">
-        <a href="/"  @click="${anchorRoute}">Books</a>
-        <a href="/aboutus" @click="${anchorRoute}">About Us</a>
+        <a href="/"  @click="${anchorRoute}">Books <i class="fa-solid fa-book"></i></a>
         <a href="/profile" @click="${anchorRoute}">My Account <i class="fa-regular fa-user"></i></a>
         <a href="/favouritebooks" @click="${anchorRoute}">Wishlist <i class="fa-regular fa-star"></i></a> 
         <a href="/cart" @click="${anchorRoute}">Cart <i class="fa-solid fa-cart-shopping"></i></a>           
-        
       </nav>
       <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 1.5em;"></sl-icon-button>
       
     </header>
     <sl-drawer class="app-side-menu" placement="start" class="drawer">
-      <img class="app-side-menu-logo" src="/images/logo.svg">
       <nav class="app-side-menu-items">
-        <a href="/" @click="${this.menuClick}">Home</a>
+        <a href="/" @click="${this.menuClick}">Books</a>
+        <a href="/profile" @click="${this.menuClick}">Account</a>
+        <a href="/favouritebooks" @click="${this.menuClick}">Wishlist</a>
+        <a href="/cart" @click="${this.menuClick}">Cart</a>
         ${this.user.accessLevel == 2 ? html`
-        <a href="/newBook" @click="${this.menuClick}">Add Book</a>
+        <a class="admin-option" href="/newBook" @click="${this.menuClick}">Add Book</a>
         ` : html``} 
-        <a href="/books" @click="${this.menuClick}">Find a book</a>
-        <a href="/hairdressers" @click="${this.menuClick}">Find hairdressers</a>
-        <a href="/favouritebooks" @click="${this.menuClick}">Fav books</a>
-        <a href="/profile" @click="${this.menuClick}">Profile</a>
         <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
       </nav>  
     </sl-drawer>
-
     `
   }
-  
 })
 
 /*    This conditional means only hairdressers see this option     ${this.user.accessLevel == 2 ? html`

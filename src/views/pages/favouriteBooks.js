@@ -28,8 +28,8 @@ class FavouriteBooksView {
   render(){
     const template = html`
       <va-app-header title="Fav Books" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">        
-        <h1>fav books</h1>
+      <div class="page-content wishlist-page">        
+        <h1>WISHLIST</h1>
         
           <div class="books-grid">
             ${this.favBooks == null ? html`

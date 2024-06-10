@@ -180,12 +180,18 @@ customElements.define('va-book', class Book extends LitElement {
         font-family: var(--bold);
         font-size: 1.4rem;
         background-color: transparent;
+        color: #5d5d5d;
         padding: .5rem; /* more click space */
         margin-bottom: 2rem;
+        cursor: pointer;
       }
 
       #backButton i {
         font-size: 1.2rem;
+      }
+
+      #backButton:hover {
+        color: black;
       }
 
       /* Animation */
@@ -208,6 +214,10 @@ customElements.define('va-book', class Book extends LitElement {
       @media all and (max-width: 768px) {
         #description {
           padding: 0 0.5rem;
+        }
+
+        .wrap {
+          margin-top: 5rem; /* Keep back btn under header */
         }
       }
     </style>
