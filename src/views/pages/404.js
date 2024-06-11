@@ -11,7 +11,7 @@ class FourOFourView{
   render(){
     const template = html`    
       <div class="calign">
-        <h1>Opps!</h1>
+        <h1>Oops!</h1>
         <p>Sorry, we couldn't find that.</p>
       </div>
     `

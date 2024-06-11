@@ -10,13 +10,14 @@ customElements.define('va-book', class Book extends LitElement {
     super()    
   }
 
+  // get book info 
   static get properties(){
     return {
       id: {
         type: String
       },
       name: {
-        type: String // this means that i can write <va-book name=" what user wants to set title to be here"></va-book>
+        type: String 
       },
       author: {
         type: String 
@@ -53,12 +54,13 @@ customElements.define('va-book', class Book extends LitElement {
   }
 
   async moreInfoHandler(){
-    // create sl-dialog
+    // create div under className book-dialog
     const dialogEl = document.createElement('div')
     // give class name
     dialogEl.className = 'book-dialog'
     // sl-dialog content
    const dialogContent = html`
+
     <style>
       /* for desktop screens ------------------------------ */
       @media all and (min-width: 768px){
@@ -69,13 +71,14 @@ customElements.define('va-book', class Book extends LitElement {
           justify-content: center;
           height: 100vh;
         }
+
         .listing-wrap {
             display: flex;
             align-self: center;
             align-items: center;
             justify-content: center;
             max-width: 80%;
-          }
+        }
   
         .image {
           max-width: 30%;
@@ -224,11 +227,9 @@ customElements.define('va-book', class Book extends LitElement {
       
       <div class="wrap">
       <button id="backButton"><i class="fa-solid fa-caret-left"></i>Back</button>
-
         <div class="listing-wrap fadeInDown-animation">
-          
           <div class="image">
-              <img src="${App.apiBase}/images/${this.image}" />
+              <img src="${App.apiBase}/images/${this.image}" alt="Picture of Book Cover for ${this.name} "/>
           </div>
           <div class="content">
               <h1>${this.name}</h1>
@@ -242,14 +243,11 @@ customElements.define('va-book', class Book extends LitElement {
                 <p class="genre-heading">Genres</p>
                 <p class="genre">${this.genre}</p>
               </div>
-              
               <div class="info-cart-section">
                 <p class="condition">Condition <br><span>${this.condition}</span></p>
                 <p class="cover-type">Cover <br><span>${this.coverType}</span></p>
                 <p class="year">Year <br><span>${this.year}</span></p>
                 <p class="price">Price <br><span>$${this.price}</span></p>
-                
-                
                 <sl-button class="cart-btn" @click=${this.addCaHandler.bind(this)}>
                 <sl-icon slot="suffix" name="cart"></sl-icon>
                 ADD TO CART
@@ -276,14 +274,6 @@ customElements.define('va-book', class Book extends LitElement {
     header.addEventListener('click', () => {
       dialogEl.remove();
     })
-
-    /* // show sl-dialog
-    dialogEl.show()
-
-    // on hide, delete
-    dialogEl.addEventListener('sl-after-hide', () => {
-        dialogEl.remove()
-    }) */ 
   }
 
   async addFavHandler(){    
@@ -307,7 +297,7 @@ customElements.define('va-book', class Book extends LitElement {
   render(){    
     return html`
     <style>
-      /* Card Styling */
+      /* General Card Styling */
       sl-card::part(base) {
         border: none !important;
         background-color: var(--body-bg);
@@ -318,6 +308,7 @@ customElements.define('va-book', class Book extends LitElement {
         padding: 0;
      }
 
+     /* Text Content Styling */
      .price-section {
       display: flex;
       justify-content: space-between; 
@@ -353,29 +344,18 @@ customElements.define('va-book', class Book extends LitElement {
     }
 
     </style>
-
-    <sl-card class="listing">
-        <img slot="image" src="${App.apiBase}/images/${this.image}" @click=${this.moreInfoHandler.bind(this)}>
-        <h2 @click=${this.moreInfoHandler.bind(this)}>${this.name}</h2>
-        <p @click=${this.moreInfoHandler.bind(this)}>${this.author}</p>
+    <!-- tabindex to ensure that sl-card is keyboard accessible -->
+    <sl-card class="listing" @click=${this.moreInfoHandler.bind(this)} tabindex="0">
+        <img slot="image" src="${App.apiBase}/images/${this.image}" alt="Picture of ${this.name} Book Cover">
+        <h2>${this.name}</h2>
+        <p>${this.author}</p>
         <div class="price-section">
           <h3>$${this.price}</h3>
-          <sl-icon-button class="fav-star" name="star" label="Add to favourites" @click=${this.addFavHandler.bind(this)}></sl-icon-button>
+          <!-- Stop wl button from running moreInfoHandler through (e) => { e.stopPropagation(); -->
+          <sl-icon-button class="fav-star" name="star" label="Add to favourites" @click=${(e) => { e.stopPropagation(); this.addFavHandler.bind(this)(); }}></sl-icon-button>
         </div>
-        
     </sl-card>    
     `
   }
   
 })
-
-/*  <sl-button @click=${this.moreInfoHandler.bind(this)}>More Info</sl-button> the .bind(this) ensures javascript understands 
-"this" as class Book instead of thinking "this" refers to sl-button bc fnc*
-
-
-more info fnc - instead of sl dialog create a div, or edit dialog to look like a view 
-
-<p class="author">by ${this.user.firstName} ${this.user.lastName}</p>
-<sl-button @click=${this.moreInfoHandler.bind(this)}>More Info</sl-button>
-<sl-icon-button name="cart" label="Add to cart" @click=${this.addCaHandler.bind(this)}></sl-icon-button>
-*/

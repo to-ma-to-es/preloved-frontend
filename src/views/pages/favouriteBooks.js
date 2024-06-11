@@ -8,12 +8,14 @@ import UserAPI from '../../UserAPI'
 
 class FavouriteBooksView {
   init(){
-    document.title = 'Favourite Books'    
+    document.title = 'My Wishlist'    
     this.favBooks = null
     this.render()    
     Utils.pageIntroAnim()
     this.getFavBooks()
   }
+
+  /* Get User's Wishlisted Books */
   async getFavBooks(){
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id)
@@ -30,7 +32,6 @@ class FavouriteBooksView {
       <va-app-header title="Fav Books" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content wishlist-page">        
         <h1>WISHLIST</h1>
-        
           <div class="books-grid">
             ${this.favBooks == null ? html`
               <sl-spinner></sl-spinner>
@@ -50,11 +51,9 @@ class FavouriteBooksView {
                   genre="${book.genre}"
                 >        
                 </va-book>
-
               `)}
             `}
             </div>
-        
       </div>      
     `
     render(template, App.rootEl)

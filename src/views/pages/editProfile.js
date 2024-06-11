@@ -17,7 +17,8 @@ class EditProfileView {
     this.getUser()    
   }
 
-  async getUser(){ // get UserAPI and all the details of the user
+  /* Get UserAPI and all the details of the user */
+  async getUser(){ 
     try {
       this.user = await UserAPI.getUser(Auth.currentUser._id)      
       this.render()
@@ -26,6 +27,7 @@ class EditProfileView {
     }
   }
 
+  /* Submit new form details and update data */
   async updateProfileSubmitHandler(e){
     e.preventDefault()
     const submitBtn = document.querySelector('.submit-btn')
@@ -57,7 +59,6 @@ class EditProfileView {
               <h1>UPDATE ACCOUNT</h1>
               <sl-icon  @click=${()=> gotoRoute('/profile')} class="x-lg" name="x-lg"></sl-icon>
             </div>   
-            
             <div class="edit-flex">
               <div class="edit-section-one">
                 <div class="input-group">
@@ -88,8 +89,6 @@ class EditProfileView {
                 <div class="button-wrapper">
                   <sl-button variant="primary" type="submit" class="submit-btn account-submit-btn" >Update Account</sl-button>
                 </div>
-              
-            
           </form>
         `}
       </div>

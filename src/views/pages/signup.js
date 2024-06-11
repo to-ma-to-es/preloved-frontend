@@ -13,6 +13,7 @@ class SignUpView{
     Utils.pageIntroAnim()
   }
 
+  /* Create new user */
   signUpSubmitHandler(e){
     e.preventDefault()    
     const submitBtn = document.querySelector('.submit-btn')

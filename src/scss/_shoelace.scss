@@ -8,6 +8,8 @@ sl-button.botd-btn::part(base){
   padding: 0 1vw 0 1vw;
 }
 
+
+
 // search bar 
 sl-input.search-bar::part(base){
   font-family: var(--regular);
@@ -62,16 +64,6 @@ sl-button.checkout-btn::part(base){
   padding: 0 1vw 0 1vw;
 }
 
-// account btns
-
-sl-button.account-btn::part(base), .login-btn::part(base){
-  border: solid var(--brand-color) 1px;
-  background-color: #EBEFD8;
-  border-radius: 2;
-  font-family: var(--regular);
-  font-size: 1rem;
-  color: var(--brand-color);
-}
 
 
 // sign out btn 
@@ -131,16 +123,62 @@ sl-select.access-selector {
 .access-selector::part(combobox){
   font-family: var(--regular);
 }
-// RESPONSIVE - MOBILE -------------------
-@media all and (max-width: 768px){ 
-/* DONT THIMK I NEED THIS
-  sl-dialog::part(panel) {
+
+
+// animations ------------------------------
+sl-button.botd-btn::part(base):hover, sl-button.cart-btn::part(base):hover, sl-button.sign-out-btn::part(base):hover,
+sl-button.account-submit-btn::part(base):hover, .listing-submit-btn::part(base):hover, sl-button.checkout-btn::part(base):hover {
+  background-color: var(--sl-color-primary-600);
+}
+
+
+// account btns
+
+
+sl-button.account-btn::part(base), .login-btn::part(base) {
+  border: solid var(--brand-color) 1px;
+  background-color: #EBEFD8;
+  border-radius: 2;
+  font-family: var(--regular);
+  font-size: 1rem;
+  color: var(--brand-color);
+  transition: all 0.5s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    max-height: none;
-    max-width: none;
+    background-color: #EBEFD8;
+
+    z-index: -2;
   }
-  */
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--brand-color);
+    transition: all 0.3s;
+
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+// RESPONSIVE - MOBILE -------------------
+@media all and (max-width: 768px){ 
+  
 }
 
 

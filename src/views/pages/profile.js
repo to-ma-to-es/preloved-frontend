@@ -8,7 +8,7 @@ import moment from 'moment'
 class ProfileView {
   init(){
     console.log('ProfileView.init')
-    document.title = 'Profile'    
+    document.title = 'My Account'    
     this.render()    
     Utils.pageIntroAnim()
   }
@@ -27,12 +27,9 @@ class ProfileView {
         </div>    
         <div class="profile-info">
           <h1>MY ACCOUNT</h1>
-  
           <h2>${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h2>
           <p>${Auth.currentUser.email}</p>
-          
           <p>Updated: ${moment(Auth.currentUser.updatedAt).format('MMMM Do YYYY')}</p>
-          
           <!--  if there is bio, display bio, if not, display nothing --> 
           ${Auth.currentUser.bio ? html`
           <p>${Auth.currentUser.bio}</p>
@@ -43,16 +40,14 @@ class ProfileView {
             <sl-button class="account-btn" @click=${()=> gotoRoute('/newBook')}>Add book listings</sl-button>
             ` : html``}
             ${user.accessLevel === 2 ? html`
-            <sl-button class="account-btn" @click=${()=> gotoRoute('/deleteBook')}>Delete book listings</sl-button>
+            <sl-button class="account-btn">Delete book listings</sl-button>
             ` : html``}
             ${user.accessLevel === 2 ? html`
-            <sl-button class="account-btn" @click=${()=> gotoRoute('/editBook')}>Edit book listings</sl-button>
+            <sl-button class="account-btn">Edit book listings</sl-button>
             ` : html``}
             <sl-button class="account-btn" @click=${()=> gotoRoute('/editProfile')}>Edit Account</sl-button>
           </div>
-
           <sl-button class="sign-out-btn" @click="${() => Auth.signOut()}">SIGN OUT</sl-button>
-
         </div> 
       </div>      
     `

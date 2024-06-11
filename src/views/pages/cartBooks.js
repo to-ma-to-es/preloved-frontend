@@ -9,15 +9,16 @@ import UserAPI from '../../UserAPI'
 
 class CartBooksView {
   async init(){
-    document.title = 'Books in cart'    
+    document.title = 'My Cart'    
     this.caBooks = null
     this.render()    
     Utils.pageIntroAnim()
     await this.getCaBooks()
-    await this.calculateTotal(); // run calc total after getting books 
-    this.displayBookSummaries();
+    await this.calculateTotal() // run calc total after getting books 
+    this.displayBookSummaries()
   }
 
+  /* Get Books */
   async getCaBooks(){
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id)
@@ -29,54 +30,55 @@ class CartBooksView {
     }
   }
   
+  /* Calculate total book price */
   async calculateTotal() {
     // get book-card
-    const books = document.querySelectorAll('.book-card'); 
+    const books = document.querySelectorAll('.book-card')
     // set total at 0
-    let total = 0; 
+    let total = 0
 
     // (forEach executes this for every book in the cart)
     books.forEach(book => {
       // get price from book-card data
-      const price = parseFloat(book.getAttribute('price')); 
+      const price = parseFloat(book.getAttribute('price')) 
       if (!isNaN(price)) { // check if price is valid
-        total += price; // adds price to the total
+        total += price // adds price to the total
       }
-    });
+    })
     // add total to the DOM as text 
     document.getElementById('total-price').textContent = total.toFixed(2); 
   }
 
-  // book summaries
+  /* Display total book price + Book summaries */
   displayBookSummaries() {
     // get book card 
-    const books = document.querySelectorAll('.book-card');
+    const books = document.querySelectorAll('.book-card')
     // create div to contain the summaries
-    const summaryContainer = document.createElement('div');
+    const summaryContainer = document.createElement('div')
     // add class for styling
-    summaryContainer.classList.add('book-summaries');
+    summaryContainer.classList.add('book-summaries')
 
 
     books.forEach(book => {
       // get attributes from each book-card
-      const name = book.getAttribute('name');
-      const author = book.getAttribute('author');
-      const price = book.getAttribute('price');
+      const name = book.getAttribute('name')
+      const author = book.getAttribute('author')
+      const price = book.getAttribute('price')
 
       // create new summary for every card
-      const bookSummary = document.createElement('div');
-      bookSummary.classList.add('book-summary');
+      const bookSummary = document.createElement('div')
+      bookSummary.classList.add('book-summary')
       // div structure with added info 
       bookSummary.innerHTML = `
         <p> ${name}<br><span> ${author}</span></p>
         <p> ${price}.00</p>
-      `;
+      `
       // append each div to summaryContainer
-      summaryContainer.appendChild(bookSummary);
-    });
+      summaryContainer.appendChild(bookSummary)
+    })
 
     // append summaryContainer to the DOM
-    document.querySelector('.summaries').appendChild(summaryContainer);
+    document.querySelector('.summaries').appendChild(summaryContainer)
   }
   
   render(){
@@ -106,11 +108,9 @@ class CartBooksView {
                       genre="${book.genre}"
                     >        
                     </va-book>
-
                   `)}
                 `}
               </div>
-
           </div>
           <div class="total-section">
             <h2>ITEM TOTAL</h2>
@@ -118,12 +118,10 @@ class CartBooksView {
             <div class="total">Total <span id="total-price"></span></div>
           </div>
         </div>
-
-
       </div>     
       <div class="checkout-section">
-              <sl-button class="checkout-btn">GO TO CHECKOUT</sl-button>
-            </div> 
+        <sl-button class="checkout-btn">GO TO CHECKOUT</sl-button>
+      </div> 
     `
     render(template, App.rootEl)
   }

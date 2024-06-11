@@ -12,6 +12,7 @@ class SignInView {
     Utils.pageIntroAnim()
   }
 
+  /* Sign In */
   signInSubmitHandler(e){
     e.preventDefault()
     const formData = new FormData(e.target)
@@ -27,10 +28,8 @@ class SignInView {
   render(){    
     const template = html`      
       <div class="page-content auth-page">
-
         <div class="login-flex">
           <img class="login-graphic" src="/images/login-graphic.jpg" alt="Digital collage of flowers and book store photo on cardboard background">
-          
           <div class="login-section">
             <div class="signinup-box">
               <h1>PRELOVED BOOKS</h1>   
@@ -44,7 +43,6 @@ class SignInView {
                 </div>
                 <p>Forgot Password?</p>
                 <sl-button type="submit" variant="primary" class="submit-btn login-btn">Log In</sl-button>
-                
               </form>
               <p>Not a member yet? <a href="/signup" @click=${anchorRoute}>Sign Up</a></p>
               <div class="icons">
@@ -54,7 +52,6 @@ class SignInView {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     `

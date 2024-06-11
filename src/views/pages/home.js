@@ -6,16 +6,17 @@ import Utils from '../../Utils'
 import BookAPI from '../../BookAPI'
 import Toast from '../../Toast'
 
+
 class HomeView {
   async init(){
-    document.title = 'Books'
+    document.title = 'Preloved Books'
     this.books = null
     this.render()    
     Utils.pageIntroAnim()
     await this.getBooks()
-   // this.filterBooks('price', '20-40')
   }
-
+ 
+  /* Filter Function */
   async filterBooks(field, match){
     // validate, so if user not filtering, this fnc doesn't run
     if(!field || !match) return 
@@ -54,12 +55,14 @@ class HomeView {
     this.render()
   }
 
+  /* Clear Filter when not active */
   clearFilterBtns() {
         // reset all btns (clear all active states of filter btns)
         const filterBtns = document.querySelectorAll('.filter-btn')
         filterBtns.forEach(btn => btn.removeAttribute("variant"))
   }
 
+  /* Show Active Filter (one at a time) */
   handleFilterBtn(e){
     // reset all btns (clear all active states of filter btns)
     this.clearFilterBtns()
@@ -74,11 +77,13 @@ class HomeView {
     this.filterBooks(field, match)
   }
 
+  /* Clear All Filters */
   clearFilters(){
     this.getBooks()
     this.clearFilterBtns()
   }
 
+  /* Get All Books */
   async getBooks(){
     try{
       this.books = await BookAPI.getBooks()
@@ -88,17 +93,15 @@ class HomeView {
       Toast.show(err, 'error')
     }
   }
+
   render(){
     const template = html`
-    <style>
-
-    </style>
       <va-app-header title="Books" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">
         <div class="banner">15% of Your Purchases Goes to Trillion Trees Australia!</div>
         <div class="book-of-the-day-parent">
           <div class="book-of-the-day">
-            <img class="botd-image" src="/images/citrus-county.jpg">
+            <img class="botd-image" src="/images/citrus-county.jpg" alt="Book Cover illustration of boy with hand covering face">
             <div class="botd-information">
               <h1>BOOK OF THE DAY</h1>
               <h2>Citrus County by John Brandon &nbsp; <span>$10.00<span></h2>
@@ -107,7 +110,6 @@ class HomeView {
             </div>
           </div>
         </div>     
-        
         <div class="filter-and-books-parent">
           <div class="filter-menu">
             <sl-input class="search-bar" placeholder="Search Books/Authors"><sl-icon name="search" slot="prefix"></sl-icon></sl-input>
@@ -140,7 +142,6 @@ class HomeView {
               <sl-button class="filter-btn" size="small" data-field="price" data-match="6-10" @click=${this.handleFilterBtn.bind(this)}>$6-$10</sl-button>
               <sl-button class="filter-btn" size="small" data-field="price" data-match="11-15" @click=${this.handleFilterBtn.bind(this)}>$11-$15</sl-button>
             </div>       
-
             <div class="btn-container">
               <sl-button class="clear-filter-btn"size="small" @click=${this.clearFilters.bind(this)}>Clear Filters</sl-button>
             </div>
@@ -162,8 +163,7 @@ class HomeView {
                 coverType="${book.coverType}"
                 year="${book.year}"
                 genre="${book.genre}">
-
-            </va-book>
+              </va-book>
             `)}
             `}
           </div>
