@@ -146,7 +146,7 @@ class HomeView {
               <sl-button class="clear-filter-btn"size="small" @click=${this.clearFilters.bind(this)}>Clear Filters</sl-button>
             </div>
           </div> 
-          <div class="books-grid"> 
+          <div class="books-grid home-grid"> 
             ${this.books == null ? html`
             <sl-spinner></sl-spinner>
             `: html`

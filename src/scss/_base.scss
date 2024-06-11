@@ -175,7 +175,6 @@ a {
   background-position: center; 
 
   .book-of-the-day {
-    // border: $border;
     background-color: var(--body-bg);
     padding: 1.4em;
     
@@ -295,7 +294,6 @@ a {
 }
 
 .checkout-section {
-  // border: solid green 3px;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -382,7 +380,6 @@ a {
     margin-top: 2rem;
   }
   .file-group {
-    // border: $border;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -601,7 +598,7 @@ a {
   .cart-books-section {
     min-width: 60vw;
     .cart-grid {
-      margin: 0 2rem 0 4rem;
+      margin: 0 2rem 0 4em;
     }
   }
 
@@ -624,14 +621,13 @@ a {
 .books-grid {
   display: grid;
   gap: 2em;
-  grid-template-columns: repeat(auto-fill, minmax(8em, 3fr));
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 3fr));
   margin: 4rem;
+  flex-grow: 1; /* take up any remaining space */ 
   
-  // border: solid red 3px;
   .book-card {
     margin: 0.4rem;
   }
-  
 }
 
 // books dialog
